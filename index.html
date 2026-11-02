@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key System | Помидорка Черри</title>
+    <style>
+        body {
+            background: #0f0f0f;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            text-align: center;
+            border: 1px solid #333;
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 { color: #ff3333; margin-bottom: 10px; font-size: 24px; }
+        p { color: #aaa; font-size: 14px; margin-bottom: 20px; }
+        
+        .step { margin-bottom: 15px; text-align: left; }
+        .step label { display: block; color: #ddd; margin-bottom: 5px; font-size: 13px; }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #222;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input:focus { outline: none; border-color: #ff3333; }
+
+        .btn {
+            background: #ff3333;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+        .btn:hover { background: #cc0000; }
+        .btn:disabled { background: #555; cursor: not-allowed; }
+        
+        .btn-sub { background: #0088cc; margin-bottom: 20px; }
+        .btn-sub:hover { background: #006699; }
+
+        .key-box {
+            background: #000;
+            border: 2px dashed #ff3333;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            color: #00ff00;
+            display: none;
+            user-select: all;
+            word-break: break-all;
+            font-weight: bold;
+        }
+        
+        .footer { margin-top: 20px; font-size: 12px; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🍅 Помидорка Черри</h1>
+        <p>Для получения ключа выполни два простых шага.</p>
+        
+        <div class="step">
+            <label>1. Твой ник в Roblox:</label>
+            <input type="text" id="robloxNick" placeholder="Например: POMIDOR_228">
+        </div>
+
+        <div class="step">
+            <label>2. Подпишись на наше комьюнити:</label>
+            <a href="https://roblox.com.ee/communities/9638977969/" target="_blank" class="btn btn-sub">📢 Перейти в комьюнити</a>
+        </div>
+
+        <button class="btn" id="getKeyBtn" onclick="checkAndGenerate()">✅ Я подписался, дать ключ</button>
+        
+        <div class="key-box" id="keyDisplay"></div>
+        <div class="footer">Human 2.0 Edition</div>
+    </div>
+
+    <script>
+        // ТУТ ТВОЙ ЕДИНСТВЕННЫЙ КЛЮЧ
+        const SECRET_KEY = "POMIDOR-HUMAN-2026";
+
+        function checkAndGenerate() {
+            const nick = document.getElementById('robloxNick').value.trim();
+            const btn = document.getElementById('getKeyBtn');
+            const display = document.getElementById('keyDisplay');
+
+            // Проверка, что ник введен
+            if (nick === "") {
+                alert("Сначала введи свой ник в Roblox!");
+                return;
+            }
+
+            // Меняем кнопку, чтобы показать загрузку
+            btn.innerText = "Проверяем...";
+            btn.disabled = true;
+
+            // Имитация задержки проверки (1.5 секунды)
+            setTimeout(() => {
+                // Показываем ключ
+                display.style.display = 'block';
+                display.innerText = SECRET_KEY;
+                
+                // Меняем кнопку на успех
+                btn.innerText = "✅ Ключ получен!";
+                btn.style.background = "#00aa00";
+                btn.style.cursor = "default";
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>
